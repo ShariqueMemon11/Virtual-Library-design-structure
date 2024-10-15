@@ -1,0 +1,31 @@
+.navbar {
+    padding: 1rem 2rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link {
+    margin-left: 20px;
+    font-size: 1.2rem;
+    color: #f8f9fa;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #00d4ff;
+  }
+  
+  .btn-outline-light {
+    border-color: #00d4ff;
+    color: #00d4ff;
+  }
+  
+  .btn-outline-light:hover {
+    background-color: #00d4ff;
+    color: #fff;
+  }
+  
