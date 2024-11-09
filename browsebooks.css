@@ -1,0 +1,70 @@
+body {
+    background: url('./assets/3d-rendered-photo-large-collection-old-books-wooden-shelves_1103059-785_LE_auto_x4-su711rh7G-transformed.jpeg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+.search-container {
+    text-align: center;
+    margin: 20px;
+}
+
+#searchInput {
+    padding: 10px;
+    width: 50%;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+    transform: scale(1.05); /* Increase scale slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.book-card img {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.book-card h3 {
+    font-size: 16px;
+    color: #f1eded;
+}
+
+.book-card p {
+    color: #f39c12;
+}
+
+@media screen and (max-width: 992px) {
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+}

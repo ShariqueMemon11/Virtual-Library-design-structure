@@ -94,8 +94,13 @@
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
+}
+.book-card:hover {
+    transform: scale(1.09);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
 .book-card img {
     width: 100%;
     border-radius: 5px;
@@ -122,4 +127,25 @@
     margin: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width:1300){
+    .main-content {
+        text-align: center;
+        color: #fff;
+    }
+    
+    .main h1 {
+        font-size: 1rem;
+    }
+    
+    .main p {
+        font-size: 0.5rem;
+    }
+    
+    .main .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+    }
 }
