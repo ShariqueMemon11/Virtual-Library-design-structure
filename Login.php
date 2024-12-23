@@ -1,3 +1,26 @@
+﻿<?php
+include("connection.php");
+session_start();
+if(isset($_POST['username']))
+{
+    $Name=$_POST['username'];
+    $password=$_POST['password'];
+    $result=mysqli_query($conn,"select * from users where Name='$Name' and Password='$password'");
+    if(mysqli_num_rows($result)==1)
+    {
+        $user=mysqli_fetch_array($result);
+        $_SESSION['name']=$user['Name'];
+        $_SESSION['role']=$user['role'];
+        header("location:Homepage.php");
+    }
+    else
+    {
+        echo "<script>alert('Invalid Username or Password');</script>";
+    }    
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +72,7 @@
     <div class="login-page">
         <div class="login-container">
             <h2 class="form-title">Library Member Login</h2>
-            <form>
+            <form method="POST" action="Login.php">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>

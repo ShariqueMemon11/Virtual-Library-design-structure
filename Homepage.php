@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,17 +31,33 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="Homepage.html">Home</a>
+                <a class="nav-link active" href="Homepage.php">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link">My Reading List</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="browsebooks.html">Browse Books</a>
+                <a class="nav-link" href="browsebooks.php">Browse Books</a>
               </li>
-              <li class="nav-item">
-                <a class="btn btn-outline-light ms-3" href="Login.html">Log In</a>
-              </li>
+              <?php 
+              if(isset($_SESSION['name']))
+              {
+              ?>
+                <li class="nav-item">
+                <a class="btn btn-outline-light ms-3" href="Login.php">Log Out</a>
+                </li>
+              <?php
+              }
+              else
+              {
+              ?>
+                <li class="nav-item">
+                <a class="btn btn-outline-light ms-3" href="Login.php">Log In</a>
+                 </li>
+              <?php
+              }
+              ?>
+              
             </ul>
           </div>
         </div>
@@ -50,7 +69,7 @@
     <div class="main-content">
       <h1>Welcome to the Virtual Library</h1>
       <p>Discover thousands of books, and create your personal reading list.</p>
-      <a href="browsebooks.html" class="btn btn-primary btn-lg" >Browse Books</a>
+      <a href="browsebooks.php" class="btn btn-primary btn-lg" >Browse Books</a>
     </div>
   </div>
 
