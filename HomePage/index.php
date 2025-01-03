@@ -9,14 +9,14 @@ session_start();
   <title>Virtual Library</title>
   <link rel="stylesheet" href="homepage.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="Navbar.css">
+  <link rel="stylesheet" href="../Navbar.css">
 </head>
 <body>
   <header>
     <div class="App">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container-fluid">
-          <a class="navbar-brand">Virtual Library</a>
+          <a class="navbar-brand" href="index.php">Virtual Library</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -31,20 +31,20 @@ session_start();
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="Homepage.php">Home</a>
+                <a class="nav-link active" href="index.php">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link">My Reading List</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="browsebooks.php">Browse Books</a>
+                <a class="nav-link" href="../BrowseBooks/index.php">Browse Books</a>
               </li>
               <?php 
               if(isset($_SESSION['name']))
               {
               ?>
                 <li class="nav-item">
-                <a class="btn btn-outline-light ms-3" href="Login.php">Log Out</a>
+                <a class="btn btn-outline-light ms-3" href="../Login/logout.php">Log Out</a>
                 </li>
               <?php
               }
@@ -52,7 +52,7 @@ session_start();
               {
               ?>
                 <li class="nav-item">
-                <a class="btn btn-outline-light ms-3" href="Login.php">Log In</a>
+                <a class="btn btn-outline-light ms-3" href="../Login/index.php">Log In</a>
                  </li>
               <?php
               }
@@ -69,7 +69,7 @@ session_start();
     <div class="main-content">
       <h1>Welcome to the Virtual Library</h1>
       <p>Discover thousands of books, and create your personal reading list.</p>
-      <a href="browsebooks.php" class="btn btn-primary btn-lg" >Browse Books</a>
+      <a href="../BrowseBooks/index.php" class="btn btn-primary btn-lg" >Browse Books</a>
     </div>
   </div>
 
@@ -88,17 +88,17 @@ session_start();
     <h2 style="padding-bottom: 15px;">Popular Books</h2>
     <div class="popular-books">
       <div class="book-card">
-        <img src="./assets/9781408855652.jpg" alt="Book Cover">
+        <img src="../assets/HP.jpg" alt="Book Cover">
         <h3>Harry Potter Series by J.K. Rowling</h3>
         <p>★★★★★</p>
       </div>
       <div class="book-card">
-        <img src="./assets/images.jpeg" alt="Book Cover">
+        <img src="../assets/13RW.jpeg" alt="Book Cover">
         <h3>Thirteen Reasons Why Novel by Jay Asher</h3>
         <p>★★★★☆</p>
       </div>
       <div class="book-card">
-        <img src="./assets/81N9xAIkohL._AC_UF1000,1000_QL80_.jpg" alt="Book Cover">
+        <img src="../assets/RDPD.jpg" alt="Book Cover">
         <h3>Rich Dad Poor Dad by Robert Kiyosaki</h3>
         <p>★★★★★</p>
       </div>

@@ -1,6 +1,6 @@
 <?php
 $error="";
-include("connection.php");
+include("../connection.php");
 if(isset($_POST['name']))
 {
     $name=$_POST['name'];
@@ -23,7 +23,7 @@ if(isset($_POST['name']))
     <link rel="stylesheet" href="Register.css">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="Navbar.css">
+    <link rel="stylesheet" href="../Navbar.css">
 </head>
 <body>
     <header>
@@ -45,13 +45,13 @@ if(isset($_POST['name']))
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link " href="Homepage.html">Home</a>
+              <a class="nav-link " href="../HomePage/index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="browsebooks.html">Browse Books</a>
+              <a class="nav-link" href="../BrowseBooks/index.php">Browse Books</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-outline-light ms-3" href="Login.html">Log In</a>
+              <a class="btn btn-outline-light ms-3" href="../Login/index.php">Log In</a>
             </li>
           </ul>
         </div>

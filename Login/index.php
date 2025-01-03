@@ -1,5 +1,5 @@
 ﻿<?php
-include("connection.php");
+include("../connection.php");
 session_start();
 if(isset($_POST['username']))
 {
@@ -30,7 +30,7 @@ if(isset($_POST['username']))
     <link rel="stylesheet" href="login.css">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="Navbar.css">
+    <link rel="stylesheet" href="../Navbar.css">
 </head>
 <body>
 
@@ -53,13 +53,13 @@ if(isset($_POST['username']))
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link " href="Homepage.html">Home</a>
+              <a class="nav-link " href="../HomePage/index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" >My Reading List</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="browsebooks.html">Browse Books</a>
+              <a class="nav-link" href="../BrowseBooks/index.php">Browse Books</a>
             </li>
             
           </ul>
@@ -83,7 +83,7 @@ if(isset($_POST['username']))
                 </div>
                 <div class="button-group">
                 <button type="submit" class="btn-login">LogIn</button>
-                <button class="btn-signup" onclick="window.location.href='Register.html'">Register</button>
+                <button class="btn-signup" onclick="window.location.href='../Register/index.php'">Register</button>
               </div>
                 <a href="#" class="forgot-password">Forgot Password?</a>
                 
