@@ -128,7 +128,9 @@ session_start();
 include '../includes/connection.php';
 $result = mysqli_query($conn, "SELECT * FROM users");
 if ($result && mysqli_num_rows($result) > 0) {
-  while ($row = mysqli_fetch_assoc($result)) { ?>
+  while ($row = mysqli_fetch_assoc($result)) {
+    if($row['Name']!=$_SESSION['name']  && $row['Email']!="Admin"){ ?>
+  
     <tr style="border-bottom: 1px solid #ddd;">
       <td><?php echo htmlspecialchars($row['Name']); ?></td>
       <td><?php echo htmlspecialchars($row['Email']); ?></td>
@@ -144,7 +146,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 </td>
 
     </tr>
-  <?php }
+  <?php } }
 } else { ?>
   <tr>
     <td colspan="5">No users found</td>
