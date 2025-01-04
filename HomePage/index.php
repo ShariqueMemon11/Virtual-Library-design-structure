@@ -73,15 +73,7 @@ session_start();
   </section>
 
   
-  <footer class="bg-dark text-white text-center py-3 mt-5">
-    <p>&copy; 2023 Virtual Library. All rights reserved.</p>
-    <p>
-      <a href="#" class="text-white me-3">Privacy Policy</a>
-      <a href="#" class="text-white me-3">Terms of Service</a>
-      <a href="#" class="text-white">Contact Us</a>
-    </p>
-  </footer>
-
+<?php include '../includes/footer.php'; ?>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>

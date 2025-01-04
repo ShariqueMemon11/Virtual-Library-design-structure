@@ -1,6 +1,6 @@
 <?php
 $error="";
-include("../connection.php");
+include("../includes/connection.php");
 if(isset($_POST['name']))
 {
     $name=$_POST['name'];
