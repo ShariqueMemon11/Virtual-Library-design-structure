@@ -34,41 +34,7 @@ if(isset($_POST['username']))
 </head>
 <body>
 
-  <header>
-  <div class="App">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-      <div class="container-fluid">
-        <a class="navbar-brand" >Virtual Library</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link " href="../HomePage/index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" >My Reading List</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../BrowseBooks/index.php">Browse Books</a>
-            </li>
-            
-          </ul>
-        </div>
-      </div>
-    </nav>
-</div>
-</header>
-
+<?php include '../includes/navbar.php'; ?>
     <div class="login-page">
         <div class="login-container">
             <h2 class="form-title">Library Member Login</h2>

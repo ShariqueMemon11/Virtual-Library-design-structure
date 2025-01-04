@@ -10,34 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="App">
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-            <div class="container-fluid">
-              <a class="navbar-brand">Virtual Library</a>
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                  <li class="nav-item"><a class="nav-link active" href="../HomePage/index.php">Home</a></li>
-                  <li class="nav-item"><a class="nav-link">My Reading List</a></li>
-                  <li class="nav-item"><a class="nav-link" href="index.php">Browse Books</a></li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </div>
-    </header>
-
+<?php include '../includes/navbar.php'; ?>
     <main>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search books by name...">
