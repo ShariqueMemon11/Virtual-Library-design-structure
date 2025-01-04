@@ -29,9 +29,31 @@
               if(isset($_SESSION['name']))
               {
               ?>
-                <li class="nav-item">
-                <a class="btn btn-outline-light ms-3" href="../Login/logout.php">Log Out</a>
+                <li style="display: flex; align-items: center; flex-direction: row; gap: 10px; position: relative;">
+                  <img src="../assets/User.png" alt="User Avatar" style="margin-left:20px; height: 50px; width: 50px; border-radius: 50%; border: 2px solid #00d4ff;">
+                  <label for="" style="color:#00d4ff; font-size: 1rem; font-weight: bold;">
+                    <?php echo $_SESSION['name']; ?>
+                  </label>
+                  <div class="nav-item dropdown user-dropdown">
+                    <a 
+                      class="nav-link dropdown-toggle" 
+                      href="#" 
+                      role="button" 
+                      data-bs-toggle="dropdown" 
+                      aria-expanded="false"
+                      style="color: #00d4ff; font-size: 1rem; font-weight: bold;"
+                    >
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="#">Profile</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="../Login/logout.php">Log Out</a></li>
+                    </ul>
+                  </div>
                 </li>
+
+
+
               <?php
               }
               else

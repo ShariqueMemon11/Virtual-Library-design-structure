@@ -1,31 +1,53 @@
 .navbar {
-    padding: 1rem 2rem;
-  }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .navbar-nav .nav-link {
-    margin-left: 20px;
-    font-size: 1.2rem;
-    color: #f8f9fa;
-    transition: color 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: #00d4ff;
-  }
-  
-  .btn-outline-light {
-    border-color: #00d4ff;
-    color: #00d4ff;
-  }
-  
-  .btn-outline-light:hover {
-    background-color: #00d4ff;
-    color: #fff;
-  }
-  
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  margin-left: 20px;
+  font-size: 1.2rem;
+  color: #f8f9fa;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #00d4ff;
+}
+
+.btn-outline-light {
+  border-color: #00d4ff;
+  color: #00d4ff;
+}
+
+.btn-outline-light:hover {
+  background-color: #00d4ff;
+  color: #fff;
+}
+
+.user-dropdown .dropdown-menu {
+  top: 40px; /* Adjust to bring it closer */
+  left: -20px; /* Align it with the user's name or avatar */
+  position: absolute; /* Ensure proper positioning relative to parent */
+  background-color: #343a40; /* Dark background for consistency */
+  border: 1px solid #00d4ff; /* Match theme */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.user-dropdown .dropdown-toggle::after {
+  display: none; /* Hide the default dropdown arrow for cleaner design */
+}
+
+.user-dropdown .dropdown-item {
+  color: #f8f9fa;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.user-dropdown .dropdown-item:hover {
+  background-color: #00d4ff;
+  color: #fff;
+}

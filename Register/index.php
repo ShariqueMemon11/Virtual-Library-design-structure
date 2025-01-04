@@ -7,9 +7,9 @@ if(isset($_POST['name']))
     $email=$_POST['email'];
     $age=$_POST['age'];
     $pass=$_POST['password'];
-    $result=mysqli_query($conn,"INSERT INTO `users`(`Sno`,`Name`, `Email`, `Age` , `Password`) VALUES (Null,'$name','$email','$age','$pass')");
+    $result=mysqli_query($conn,"INSERT INTO `users`(`Name`, `Email`, `Age` , `Password`) VALUES ('$name','$email','$age','$pass')");
     if($result)
-            header("location:login.php");
+            header("location:../Login/index.php");
         else
             $error="Unable to register User";
 }
@@ -35,7 +35,7 @@ if(isset($_POST['name']))
  <div class="login-page">
      <div class="login-container">
          <h2 class="form-title">Library Member Login</h2>
-         <form action="Register.php" method="POST" onsubmit="return validateForm();">
+         <form action="index.php" method="POST" onsubmit="return validateForm();">
              <div class="form-group">
                  <label for="name">Name</label>
                  <input type="text" id="name" name="name" required>
@@ -74,7 +74,7 @@ if(isset($_POST['name']))
         }
 
         // Password validation: enforces strong password rules
-        var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&]{8,}$/;
+        var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&..])[A-Za-z\d@$!%*?&..]{8,}$/;
             if (!passwordRegex.test(password)) {
                 alert("Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
                 return false;

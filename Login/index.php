@@ -10,8 +10,8 @@ if(isset($_POST['username']))
     {
         $user=mysqli_fetch_array($result);
         $_SESSION['name']=$user['Name'];
-        $_SESSION['role']=$user['role'];
-        header("location:Homepage.php");
+        $_SESSION['role']=$user['Role'];
+        header("location:../HomePage/index.php");
     }
     else
     {
@@ -38,7 +38,7 @@ if(isset($_POST['username']))
     <div class="login-page">
         <div class="login-container">
             <h2 class="form-title">Library Member Login</h2>
-            <form method="POST" action="Login.php">
+            <form method="POST" action="../Login/index.php">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
