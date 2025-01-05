@@ -10,43 +10,8 @@ session_start();
   <link rel="stylesheet" href="homepage.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../Navbar.css">
-  <style>
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-
-    .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto; /* 15% from the top and centered */
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="UserTable.css">
+ 
 </head>
 <body>
   
@@ -56,9 +21,19 @@ session_start();
       <h1>Welcome to the Virtual Library</h1>
       <p>Discover thousands of books, and create your personal reading list.</p>
       <a href="../BrowseBooks/index.php" class="btn btn-primary btn-lg">Browse Books</a>
-      <?php if($_SESSION['role'] == 'Admin') { ?>
-        <a href="#" class="btn btn-primary btn-lg" id="addBookBtn">Admin Panel</a>
-      <?php } ?>
+      <?php 
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['role']) && $_SESSION['role'] == 'Admin') { 
+        ?>
+            <div style="text-align: center;">
+                <button class="btn btn-primary" id="addBookBtn">Admin Pannel</button>
+            </div>
+        <?php
+        }
+        ?>
     </div>
   </div>
 

@@ -23,8 +23,12 @@
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search books by name...">
         </div>
-        <?php
-        if ($_SESSION['role'] == 'Admin') { 
+        <?php 
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['role']) && $_SESSION['role'] == 'Admin') { 
         ?>
             <div style="text-align: center;">
                 <button class="btn btn-primary" id="addBookBtn">Add Book</button>
@@ -32,6 +36,7 @@
         <?php
         }
         ?>
+
         
         <div class="book-grid">
             <div class="book-card">
