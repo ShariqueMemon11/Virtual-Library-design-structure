@@ -63,9 +63,6 @@
                     </ul>
                   </div>
                 </li>
-
-
-
               <?php
               }
               else
