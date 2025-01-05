@@ -20,11 +20,23 @@
                 <a class="nav-link active" href="../HomePage/index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link">My Reading List</a>
-              </li>
+               <?php 
+                if (isset($_SESSION['name']) && ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'Librarian')) {
+                ?>
+                <a class="nav-link" href="../MyReadingList/index.php">My Reading List</a>
+               <?php
+                }
+                ?>
+             </li>
               <li class="nav-item">
-                <a class="nav-link" href="../BrowseBooks/index.php">Browse Books</a>
-              </li>
+               <?php 
+                if (isset($_SESSION['name'])) {
+               ?>
+               <a class="nav-link" href="../BrowseBooks/index.php">Browse Books</a>
+               <?php
+              }
+               ?>
+              </li>              
               <?php 
               if(isset($_SESSION['name']))
               {

@@ -49,6 +49,47 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
+<Script>
+function searchBook() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query.length === 0) {
+        // Optionally clear results if input is empty
+        return;
+    }
+
+    // Make an AJAX call to fetch books
+    fetch(`searchBook.php?query=${encodeURIComponent(query)}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            // Clear existing book grid
+            const bookGrid = document.querySelector('.book-grid');
+            bookGrid.innerHTML = '';
+
+            // Add books to the grid
+            data.books.forEach(book => {
+                const bookCard = `
+                    <div class="book-card">
+                        <img src="${book.Image}" alt="${book.Name}">
+                        <h3>${book.Name}</h3>
+                        <div class="star-rating">
+                            ${'<i class="fas fa-star"></i>'.repeat(book.Rating)}
+                        </div>
+                        <a href="#" class="preview-button">Preview</a>
+                        <a href="#" class="preview-button">Read</a>
+                        <a href="#" class="preview-button">Add to My List</a>
+                    </div>
+                `;
+                bookGrid.insertAdjacentHTML('beforeend', bookCard);
+            });
+        }
+    })
+    .catch(err => console.error('Error:', err));
+}
+</Script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +106,7 @@ if (isset($_POST['submit'])) {
 <?php include '../includes/navbar.php'; ?>
     <main>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search books by name...">
+        <input type="text" id="searchInput" placeholder="Search books by name..." onkeyup="searchBook()">
         </div>
         <?php 
         if (session_status() === PHP_SESSION_NONE) {
@@ -109,7 +150,7 @@ if (isset($_POST['submit'])) {
 
         <!-- Add Book Modal -->
         <?php include 'addBookModal.php'; ?>
-<?php include '../includes/footer.php'; ?>
+        <?php include '../includes/footer.php'; ?>
         <script>
             // Get modal element
             var modal = document.getElementById("addBookModal");
