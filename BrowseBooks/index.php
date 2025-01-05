@@ -1,5 +1,52 @@
 <?php
-    session_start();
+session_start();
+include '../includes/connection.php';
+
+// Fetch books from the database
+$query = "SELECT * FROM books";
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
+
+if (isset($_POST['submit'])) {
+    // Capture and sanitize input
+    $bookName = $_POST['bookName'];
+    $bookRating = (int) $_POST['bookRating']; // Ensure it's an integer
+    $bookDescription = $_POST['bookDescription'];
+
+    // Handle file upload
+    $bookImage = $_FILES['bookImage']['name'];
+    $target = "../assets/" . basename($bookImage);
+
+    if (move_uploaded_file($_FILES['bookImage']['tmp_name'], $target)) {
+        echo "<script>console.log('Image uploaded successfully to: $target')</script>";
+    } else {
+        echo "<script>alert('Failed to upload the image file!')</script>";
+        exit();
+    }
+
+    // Debugging output
+    echo "<script>console.log('Book Name: $bookName, Rating: $bookRating, Description: $bookDescription, Image: $bookImage')</script>";
+
+    // Use prepared statements for the SQL query
+    $stmt = $conn->prepare("INSERT INTO books (Name, Rating, Description, Image) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("siss", $bookName, $bookRating, $bookDescription, $bookImage);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Book added successfully!')</script>";
+    } else {
+        echo "<script>alert('Failed to add book: " . $stmt->error . "')</script>";
+    }
+
+    // Close the statement
+    $stmt->close();
+
+    // Redirect to avoid form resubmission
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,9 +60,6 @@
     <link rel="stylesheet" href="../Navbar.css">
     <link rel="stylesheet" href="AddBookform.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
-
 </head>
 <body>
 <?php include '../includes/navbar.php'; ?>
@@ -28,7 +72,7 @@
             session_start();
         }
 
-        if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['role']) && $_SESSION['role'] == 'Admin') { 
+        if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['role']) && ($_SESSION['role'] == 'Admin' ||  $_SESSION['role'] == 'Librarian') ) { 
         ?>
             <div style="text-align: center;">
                 <button class="btn btn-primary" id="addBookBtn">Add Book</button>
@@ -37,52 +81,34 @@
         }
         ?>
 
-        
         <div class="book-grid">
-            <div class="book-card">
-                <img src="../assets/hp.jpg" alt="Harry Potter Book">
-                <h3>Harry Potter Series by J.K. Rowling</h3>
-                <div class="star-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <?php 
+            while ($row = mysqli_fetch_assoc($result)) {
+                $name = htmlspecialchars($row['Name']);
+                $rating = (int) $row['Rating'];
+                $description = htmlspecialchars($row['Description']);
+                $image = htmlspecialchars($row['Image']);
+            ?>
+                <div class="book-card">
+                    <img src="../assets/<?php echo $image; ?>" alt="<?php echo $name; ?>">
+                    <h3><?php echo $name; ?></h3>
+                    <div class="star-rating">
+                        <?php for ($i = 0; $i < $rating; $i++) { ?>
+                            <i class="fas fa-star"></i>
+                        <?php } ?>
+                    </div>
+                    <p style="color:#fff;"><?php echo $description; ?></p>
+                    <a href="#" class="preview-button">Preview</a>
+                    <a href="#" class="preview-button">Read</a>
+                    <a href="#" class="preview-button">Add to My List</a>
                 </div>
-                <a href="#" class="preview-button">Preview</a>
-                <a href="#" class="preview-button">Read</a>
-                <a href="#" class="preview-button">Add to My List</a>
-            </div>
-            <div class="book-card">
-                <img src="../assets/13RW.jpeg" alt="Thirteen Reasons Why Book">
-                <h3>Thirteen Reasons Why by Jay Asher</h3>
-                <div class="star-rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <a href="#" class="preview-button">Preview</a>
-                <a href="#" class="preview-button">Read</a>
-                <a href="#" class="preview-button">Add to My List</a>
-            </div>
+            <?php 
+            }
+            ?>
         </div>
 
         <!-- Add Book Modal -->
-        <div id="addBookModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Add New Book</h2>
-                <form id="addBookForm">
-                    <label for="bookName">Book Name:</label>
-                    <input type="text" id="bookName" name="bookName" required>
-                    
-                    <label for="bookRating">Rating:</label>
-                    <input type="number" id="bookRating" name="bookRating" min="1" max="5" required>
-                    
-                    <label for="bookDescription">Description:</label>
-                    <textarea id="bookDescription" name="bookDescription" required></textarea>
-                    
-                    <label for="bookImage">Image URL:</label>
-                    <input type="text" id="bookImage" name="bookImage" required>
-                    
-                    <button type="submit" class="btn btn-primary">Add Book</button>
-                </form>
-            </div>
-        </div>
+        <?php include 'addBookModal.php'; ?>
 <?php include '../includes/footer.php'; ?>
         <script>
             // Get modal element

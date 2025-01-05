@@ -42,7 +42,7 @@
                       data-bs-toggle="dropdown" 
                       aria-expanded="false"
                       style="color: #00d4ff; font-size: 1rem; font-weight: bold;"
-                    >
+                    >▼
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
                       <li><a class="dropdown-item" href="#">Profile</a></li>

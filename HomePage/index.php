@@ -52,7 +52,7 @@ session_start();
     <h2 style="padding-bottom: 15px;">Popular Books</h2>
     <div class="popular-books">
       <div class="book-card">
-        <img src="../assets/HP.jpg" alt="Book Cover">
+        <img src="../assets/Harry Potter.jpg" alt="Book Cover">
         <h3>Harry Potter Series by J.K. Rowling</h3>
         <p>★★★★★</p>
       </div>
